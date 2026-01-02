@@ -1,10 +1,7 @@
 package org.harsh.tuple.paisa.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.harsh.tuple.paisa.dto.EmailDetails;
 import org.harsh.tuple.paisa.exception.InsufficientBalanceException;
 import org.harsh.tuple.paisa.exception.InvalidTransactionAmountException;
 import org.harsh.tuple.paisa.exception.WalletNotFoundException;
@@ -15,7 +12,6 @@ import org.harsh.tuple.paisa.repository.UserRepository;
 import org.harsh.tuple.paisa.repository.WalletRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -37,11 +33,9 @@ public class WalletService {
     private final WalletRepository walletRepository;
     private final TransactionRepository transactionRepository;
     private final CashbackService cashbackService;
-    //    private final EmailService emailService;
+        private final EmailService emailService;
     private final UserRepository userRepository;
     private final CashbackRepository cashbackRepository;
-    private final ObjectMapper objectMapper;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
     LocalDateTime now = LocalDateTime.now();
     private final Map<String, List<Object>> userHistoryMap = new ConcurrentHashMap<>();
 
@@ -190,7 +184,7 @@ public class WalletService {
     public void addHistory(String userId, List<Map<String, Object>> history) {
         log.info("adding history");
 
-        userHistoryMap.computeIfAbsent(userId, _ -> new ArrayList<>()).addAll(history);
+        userHistoryMap.computeIfAbsent(userId, id -> new ArrayList<>()).addAll(history);
 
         log.info("history added calling get history");
         getHistory(userId);
@@ -210,17 +204,13 @@ public class WalletService {
             String emailMessage = String.format(
                     "Hello %s,\n\nYou have successfully received %.2f in your Account.\nThank you for using our service.\n -Tuple Paisa",
                     user.getUsername(), amount);
-            EmailDetails emailDetails = new EmailDetails(
+
+
+            emailService.sendEmail(
                     user.getEmail(),
                     emailMessage,
                     "Transaction Successful"
-
             );
-            try {
-                kafkaTemplate.send("email-notifications", objectMapper.writeValueAsString(emailDetails));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
         });
 //        * avg time --> 30.498 [83.48]
     }

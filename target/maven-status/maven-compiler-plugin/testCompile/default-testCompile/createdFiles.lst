@@ -1,0 +1,16 @@
+org/harsh/tuple/paisa/TuplePaisaApplicationTests.class
+org/harsh/tuple/paisa/service/EmailServiceTest.class
+org/harsh/tuple/paisa/service/WalletServiceTest$1.class
+org/harsh/tuple/paisa/service/CashbackServiceTest.class
+org/harsh/tuple/paisa/controller/AnalyticsControllerTest.class
+org/harsh/tuple/paisa/controller/WalletControllerTest.class
+org/harsh/tuple/paisa/util/JwtUtilTest.class
+org/harsh/tuple/paisa/service/WalletServiceTest.class
+org/harsh/tuple/paisa/service/UserServiceTest.class
+org/harsh/tuple/paisa/controller/UserControllerTest.class
+org/harsh/tuple/paisa/controller/CashbackControllerTest.class
+org/harsh/tuple/paisa/service/EmailConsumerServiceTest.class
+org/harsh/tuple/paisa/exception/GlobalExceptionHandlerTest.class
+org/harsh/tuple/paisa/exception/GlobalExceptionHandlerTest$1.class
+org/harsh/tuple/paisa/service/AnalyticsServiceTest.class
+org/harsh/tuple/paisa/config/JwtAuthenticationFilterTest.class

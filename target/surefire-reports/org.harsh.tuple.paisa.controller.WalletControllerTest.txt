@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.harsh.tuple.paisa.controller.WalletControllerTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.320 s -- in org.harsh.tuple.paisa.controller.WalletControllerTest

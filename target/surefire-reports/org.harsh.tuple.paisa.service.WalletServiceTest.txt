@@ -1,0 +1,147 @@
+-------------------------------------------------------------------------------
+Test set: org.harsh.tuple.paisa.service.WalletServiceTest
+-------------------------------------------------------------------------------
+Tests run: 39, Failures: 4, Errors: 5, Skipped: 0, Time elapsed: 0.722 s <<< FAILURE! -- in org.harsh.tuple.paisa.service.WalletServiceTest
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_VerifyEmailContent -- Time elapsed: 0.039 s <<< ERROR!
+org.mockito.exceptions.misusing.PotentialStubbingProblem: 
+
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'findById' method:
+    userRepository.findById("user1");
+    -> at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+ - has following stubbing(s) with different arguments:
+    1. userRepository.findById("user2");
+      -> at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_VerifyEmailContent(WalletServiceTest.java:645)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_VerifyEmailContent(WalletServiceTest.java:648)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_RecipientNotFound -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <org.harsh.tuple.paisa.exception.WalletNotFoundException> but was: <java.util.NoSuchElementException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_RecipientNotFound(WalletServiceTest.java:215)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.lambda$transferWallet_RecipientNotFound$5(WalletServiceTest.java:216)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_CompleteFlow -- Time elapsed: 0.008 s <<< ERROR!
+org.mockito.exceptions.misusing.PotentialStubbingProblem: 
+
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'findById' method:
+    userRepository.findById("user1");
+    -> at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+ - has following stubbing(s) with different arguments:
+    1. userRepository.findById("user2");
+      -> at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_CompleteFlow(WalletServiceTest.java:715)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_CompleteFlow(WalletServiceTest.java:718)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_SenderNotFound -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <org.harsh.tuple.paisa.exception.WalletNotFoundException> but was: <java.util.NoSuchElementException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_SenderNotFound(WalletServiceTest.java:206)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.lambda$transferWallet_SenderNotFound$4(WalletServiceTest.java:207)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_TransactionDetails -- Time elapsed: 0.005 s <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_TransactionDetails(WalletServiceTest.java:509)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_ExactBalance -- Time elapsed: 0.004 s <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_ExactBalance(WalletServiceTest.java:180)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_InsufficientBalance -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <org.harsh.tuple.paisa.exception.InsufficientBalanceException> but was: <java.util.NoSuchElementException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_InsufficientBalance(WalletServiceTest.java:198)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.lambda$transferWallet_InsufficientBalance$3(WalletServiceTest.java:199)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_Success -- Time elapsed: 0.008 s <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_Success(WalletServiceTest.java:159)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_SameSenderAndRecipient -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <org.harsh.tuple.paisa.exception.WalletNotFoundException> but was: <java.util.NoSuchElementException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.transferWallet_SameSenderAndRecipient(WalletServiceTest.java:429)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:143)
+	at org.harsh.tuple.paisa.service.WalletService.transferWallet(WalletService.java:89)
+	at org.harsh.tuple.paisa.service.WalletServiceTest.lambda$transferWallet_SameSenderAndRecipient$12(WalletServiceTest.java:430)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
