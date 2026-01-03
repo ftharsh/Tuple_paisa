@@ -6,10 +6,12 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ErrorResponse {
-    private final String message;
-    private final String errorCode;
-    private final LocalDateTime timestamp;
-    private final Map<String, Object> details;
+    private  String message;
+    private  String errorCode;
+    private  LocalDateTime timestamp;
+    private  Map<String, Object> details;
 }
 
