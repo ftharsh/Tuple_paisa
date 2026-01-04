@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)  //* Disabling CSRF for APIs cuz we are using JWT
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
+                    config.setAllowedOrigins(Collections.singletonList("https://tuplepaisa-frontend.vercel.app"));
                     config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     config.setAllowedHeaders(Collections.singletonList("*"));
                     config.setAllowCredentials(true);
